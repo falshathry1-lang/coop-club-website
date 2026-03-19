@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"import pdfplumber; pdf = pdfplumber.open\\(''''/c/Users/Faisal/Desktop/Coop website/Coop Club Structure .pdf''''\\); print\\(len\\(pdf.pages\\), ''''pages''''\\); print\\(pdf.pages[0].extract_text\\(\\)\\)\")",
+      "Bash(python -c \"import pdfplumber; pdf = pdfplumber.open\\(''''C:/Users/Faisal/Desktop/Coop website/Coop Club Structure .pdf''''\\); print\\(len\\(pdf.pages\\), ''''pages''''\\); print\\(pdf.pages[0].extract_text\\(\\)\\)\")",
+      "Bash(pip install:*)",
+      "Bash(python -c \"import pdfplumber; pdf = pdfplumber.open\\(''C:/Users/Faisal/Desktop/Coop website/Coop Club Structure .pdf''\\); print\\(len\\(pdf.pages\\), ''pages''\\); [print\\(f''--- Page {i+1} ---\\\\n'', p.extract_text\\(\\) or ''''\\) for i,p in enumerate\\(pdf.pages[:10]\\)]\")",
+      "Bash(npx create-next-app@14 . --typescript --tailwind --eslint --app --no-src-dir --import-alias \"@/*\" --no-git)",
+      "Bash(where node:*)",
+      "Bash(where npm:*)",
+      "Bash(npm --version)",
+      "Bash(cmd /c \"node --version && npm --version && npx --version\")",
+      "Bash(cmd /c \"where node\")",
+      "Bash(cmd /c \"C:/Program Files/nodejs/node.exe --version\")",
+      "Bash(cmd /c \"powershell -Command \"\"Get-Command node -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Source\"\"\")",
+      "Read(//c/Program Files/**)",
+      "Read(//c/Users/Faisal/AppData/Roaming/**)",
+      "Bash(python -c \":*)"
+    ]
+  }
+}
