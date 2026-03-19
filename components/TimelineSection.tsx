@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
-interface TimelineItem {
+export interface TimelineItem {
   year: number;
   month: number;
   title: string;

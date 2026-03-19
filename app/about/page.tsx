@@ -1,5 +1,5 @@
 import AnimatedSection from '@/components/AnimatedSection';
-import TimelineSection from '@/components/TimelineSection';
+import TimelineSection, { type TimelineItem } from '@/components/TimelineSection';
 import timelineData from '@/data/timeline.json';
 
 const values = [
@@ -120,7 +120,7 @@ export default function AboutPage() {
               من فكرة واحدة إلى أربع سنين من الابتكار، هكذا وصلنا إلى هنا.
             </p>
           </AnimatedSection>
-          <TimelineSection items={timelineData} />
+          <TimelineSection items={timelineData as TimelineItem[]} />
         </div>
       </section>
     </>
