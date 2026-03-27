@@ -2,6 +2,7 @@ import Link from 'next/link';
 import AnimatedSection from '@/components/AnimatedSection';
 import InstagramPreview from '@/components/InstagramPreview';
 import StatsCounter from '@/components/StatsCounter';
+import EscapeRoomRegistration from '@/components/EscapeRoomRegistration';
 import instagramData from '@/data/instagram.json';
 
 export default function HomePage() {
@@ -96,6 +97,9 @@ export default function HomePage() {
           <InstagramPreview posts={latestPosts} />
         </div>
       </section>
+
+      {/* ── Escape Failure 2.0 Registration (temporary) ─────────── */}
+      <EscapeRoomRegistration />
 
       {/* ── Programmes ───────────────────────────────────────────── */}
       <section className="py-24 bg-slate-50">
