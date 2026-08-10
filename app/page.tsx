@@ -2,7 +2,6 @@ import Link from 'next/link';
 import AnimatedSection from '@/components/AnimatedSection';
 import InstagramPreview from '@/components/InstagramPreview';
 import StatsCounter from '@/components/StatsCounter';
-import EscapeRoomRegistration from '@/components/EscapeRoomRegistration';
 import instagramData from '@/data/instagram.json';
 
 export default function HomePage() {
@@ -35,10 +34,30 @@ export default function HomePage() {
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>
-            <h1 className="text-6xl sm:text-7xl md:text-8xl font-black tracking-tight leading-none mb-6">
+            <h1 className="text-6xl sm:text-7xl md:text-8xl font-black tracking-tight leading-none mb-8">
               <span className="block text-slate-900">COOP</span>
               <span className="block text-gradient">Club</span>
             </h1>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.15}>
+            <Link
+              href="/apply"
+              className="group relative flex items-center justify-between gap-4 mx-auto mb-10 max-w-xl rounded-3xl bg-gradient-to-l from-emerald-500 to-teal-500 px-6 py-5 sm:px-8 sm:py-6 shadow-xl shadow-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-500/40 hover:scale-[1.02] active:scale-[0.99] transition-all overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative text-right">
+                <p className="text-white font-black text-xl sm:text-2xl leading-tight mb-1">
+                  🎉 فتح التسجيل الآن!
+                </p>
+                <p className="text-emerald-50 text-sm sm:text-base font-medium">
+                  انضم إلى نادي التدريب التعاوني لهذا الفصل الدراسي
+                </p>
+              </div>
+              <span className="relative shrink-0 flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/20 text-white text-xl group-hover:bg-white/30 transition-colors">
+                ←
+              </span>
+            </Link>
           </AnimatedSection>
 
           <AnimatedSection delay={0.2}>
@@ -97,9 +116,6 @@ export default function HomePage() {
           <InstagramPreview posts={latestPosts} />
         </div>
       </section>
-
-      {/* ── Escape Failure 2.0 Registration (temporary) ─────────── */}
-      <EscapeRoomRegistration />
 
       {/* ── Programmes ───────────────────────────────────────────── */}
       <section className="py-24 bg-slate-50">

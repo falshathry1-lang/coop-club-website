@@ -51,6 +51,16 @@ export default function ApplyForm() {
     const form = e.currentTarget;
     const data = new FormData(form);
 
+    const sheetsWebhookUrl = process.env.NEXT_PUBLIC_SHEETS_WEBHOOK_URL;
+    if (sheetsWebhookUrl) {
+      fetch(sheetsWebhookUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify(Object.fromEntries(data)),
+      }).catch(() => {});
+    }
+
     try {
       const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
         method: 'POST',

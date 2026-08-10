@@ -137,6 +137,47 @@ Set `"type"` to `"upcoming"` or `"past"`. Upcoming events show a live countdown 
 
 ---
 
+## Google Sheet Setup (Admin View)
+
+Every application also gets appended to a Google Sheet, so club admins can see all submissions without a Formspree login.
+
+1. Create a new sheet at [sheets.new](https://sheets.new)
+2. Go to **Extensions → Apps Script**, clear the boilerplate, and paste:
+   ```javascript
+   function doPost(e) {
+     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+     var data = JSON.parse(e.postData.contents);
+
+     if (sheet.getLastRow() === 0) {
+       sheet.appendRow(['Timestamp', 'Full Name', 'Student ID', 'Email', 'Phone', 'Major', 'Academic Year', 'Department Interest', 'Skills', 'Why Join']);
+     }
+
+     sheet.appendRow([
+       new Date(),
+       data.fullName || '',
+       data.studentId || '',
+       data.email || '',
+       data.phone || '',
+       data.major || '',
+       data.academicYear || '',
+       data.departmentInterest || '',
+       data.skills || '',
+       data.whyJoin || '',
+     ]);
+
+     return ContentService.createTextOutput(JSON.stringify({ result: 'success' }))
+       .setMimeType(ContentService.MimeType.JSON);
+   }
+   ```
+3. **Deploy → New deployment** → type **Web app** → Execute as **Me**, Who has access **Anyone** → Deploy → authorize
+4. Copy the URL ending in `/exec` and add it to `.env.local`:
+   ```
+   NEXT_PUBLIC_SHEETS_WEBHOOK_URL=https://script.google.com/.../exec
+   ```
+5. Share the sheet itself with other club admins via the normal **Share** button
+
+---
+
 ## Auto-categorize Posts with Claude API (Optional)
 
 If you get a fresh Apify export and want Claude to automatically categorize posts and extract timeline milestones:
@@ -172,6 +213,7 @@ This will overwrite `data/instagram.json` and `data/timeline.json` with AI-gener
 3. Click **New Project** → Import your repository
 4. Under **Environment Variables**, add:
    - `NEXT_PUBLIC_FORMSPREE_ID` → your Formspree ID
+   - `NEXT_PUBLIC_SHEETS_WEBHOOK_URL` → your Apps Script Web App URL
 5. Click **Deploy**
 
 Your site will be live at `https://your-project.vercel.app` in ~2 minutes.
